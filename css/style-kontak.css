@@ -1,0 +1,174 @@
+.hero-section {
+  text-align: center;
+  padding: 20px 20px;
+  /* background-color: #f4f4f9; */
+}
+.hero-section h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+.hero-section p {
+  font-size: 1.2rem;
+  margin: 10px 0 30px;
+  color: #666;
+}
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+.logo-container a {
+  text-decoration: none;
+  color: black;
+}
+.logo-container a:hover {
+  color: #333;
+}
+.logo-kerjasama {
+  width: 200px; /* Sesuaikan ukuran logo */
+  height: auto;
+  transition: transform 0.3s ease;
+}
+.logo-kerjasama:hover {
+  transform: scale(1.1); /* Efek hover untuk memperbesar logo */
+}
+
+/* footer */
+footer {
+  background-color: #f2f2f2;
+  padding: 20px 10px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between; /* Ini akan menyebarkan ruang antar item */
+  flex-wrap: wrap;
+  padding: 20px 10px;
+  border-top: 1px solid #ccc;
+}
+
+.footer-section {
+  flex: 1; /* Semua bagian mencoba mengambil ruang yang sama */
+  margin: 15px; /* Margin default untuk semua sisi */
+  min-width: 200px; /* Sedikit dikurangi dari 220px, sesuaikan jika perlu */
+}
+
+/* Target khusus untuk kolom Menu */
+.footer-section-menu {
+  margin-right: 5px; /* Anda bisa sesuaikan nilai ini, defaultnya 15px */
+}
+
+/* Target khusus untuk kolom Maps */
+.footer-section-maps {
+  margin-left: 5px; /* Anda bisa sesuaikan nilai ini, defaultnya 15px */
+}
+
+
+.footer-section h4 {
+  margin: 0 0 15px 0;
+  color: #666;
+  font-size: 30px; /* Ukuran font dari gambar Anda */
+  font-weight: bold;
+}
+
+.footer-section a {
+margin: 0;
+color: black;
+}
+
+.footer-section p {
+margin: 0;
+padding-top: 14px;
+padding-bottom: 8px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 5px;
+}
+
+.footer-section ul li a {
+  color: black;
+  text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}
+
+.logo-footer img {
+  /* width: 40px; ini sudah di-override oleh inline style di HTML */
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.footer-section .map-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.footer-section .map-container iframe {
+  width: 100%;
+  height: 260px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.footer-bottom img {
+  height: 30px;
+  margin: 0 5px;
+}
+
+.footer-bottom p {
+  margin: 10px 0;
+}
+
+.custom-a {
+padding-top:15px;
+}
+
+@media (max-width: 992px) { /* Titik breakpoint mungkin perlu disesuaikan */
+  .footer-section {
+      min-width: calc(50% - 30px); /* Dua kolom per baris, dikurangi total margin horizontal */
+  }
+  .footer-section-menu,
+  .footer-section-maps {
+      /* Pastikan margin kembali normal atau sesuai untuk tampilan 2 kolom */
+      margin-left: 15px;
+      margin-right: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-section {
+      min-width: 100%; /* Setiap section mengambil lebar penuh */
+      margin: 15px 0;
+  }
+  .footer-section h4 {
+      font-size: 24px;
+  }
+  .footer-section .map-container iframe {
+      height: 250px;
+  }
+  /* Pastikan margin kiri dan kanan kembali ke nilai default jika diperlukan di mobile */
+  .footer-section-menu,
+  .footer-section-maps {
+      margin-left: 0; /* Atau 15px jika .footer-section punya margin-left/right 0 di mobile */
+      margin-right: 0; /* Atau 15px */
+  }
+}

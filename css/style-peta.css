@@ -1,0 +1,528 @@
+/* indikator stunting dan indikator pangan diatas */
+.layer-control-panel {
+    /* Gaya dasar panel tetap sama */
+    position: fixed;
+    top: 75px;
+    /* Naikkan sedikit mungkin, atau sesuaikan */
+    left: 250px;
+    /* Pusatkan panel */
+    transform: translateX(-50%);
+    /* Koreksi pemusatan */
+    background-color: white;
+    padding: 1px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+    /* max-width: 250px; DIHAPUS atau disesuaikan untuk horizontal */
+    width: auto;
+    /* Biarkan lebar menyesuaikan konten */
+    display: flex;
+    /* Untuk layout horizontal dari grup utama */
+    gap: 20px;
+    /* Jarak antar grup utama */
+}
+
+.main-indicator-group {
+    /* Setiap grup utama (Stunting, Pangan) akan menempati ruangnya sendiri */
+    display: flex;
+    flex-direction: column;
+    /* Label utama di atas, detail di bawah */
+    align-items: flex-start;
+    /* Ratakan kiri untuk item di dalam grup */
+}
+
+.main-indicator-title {
+    font-weight: bold;
+    cursor: pointer;
+    padding: 8px 0px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.main-indicator-title input[type="checkbox"] {
+    margin-right: 8px;
+    transform: scale(1.1);
+    /* Sedikit perbesar checkbox utama */
+}
+
+.indicator-details {
+    padding-left: 25px;
+    /* Indentasi untuk sub-item */
+    margin-top: 5px;
+    border-left: 2px solid #f0f0f0;
+    /* Garis vertikal pemisah opsional */
+    display: flex;
+    /* Menggunakan flex untuk tata letak internal jika diperlukan */
+    flex-direction: column;
+    /* Pastikan label di dalamnya tersusun vertikal */
+    gap: 3px;
+    /* Jarak antar sub-item */
+}
+
+.indicator-details label {
+    display: flex;
+    /* Untuk alignment swatch warna dan teks */
+    align-items: center;
+    margin-bottom: 3px;
+    font-weight: normal;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.indicator-details input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.color-swatch {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+}
+
+
+/* Styling untuk Panel sebelah kanan */
+.layer-panel {
+    display: none;
+    position: fixed;
+    top: 85px;
+    right: 20px;
+    width: 300px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    z-index: 1001;
+    overflow-y: auto;
+    max-height: calc(100vh - 170px);
+    border-left: 5px solid #007bff;
+    font-family: Arial, sans-serif;
+}
+
+/* Header Panel */
+.layer-panel h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.layer-panel p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Styling Kategori */
+.category {
+    background: #f8f9fa;
+    padding: 8px 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Tanda Plus/Munis & Label Kategori */
+.category-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-weight: bold;
+}
+
+/* Tombol Plus/Minus */
+.toggle-button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #007bff;
+    margin-right: 8px;
+    transition: transform 0.2s;
+}
+
+.toggle-button:hover {
+    transform: scale(1.2);
+    color: #0056b3;
+}
+
+/* Efek Hover Kategori */
+.category:hover {
+    background: #eaeaea;
+}
+
+
+/* Styling untuk daftar isi kategori */
+.items {
+    margin-top: 5px;
+    margin-left: 25px;
+    font-size: 14px;
+    padding: 8px 12px;
+    display: none;
+    color: #555;
+    background: #ffffff;
+    border-left: 3px solid #007bff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Item List */
+.items div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* Ikon sebelum teks */
+.items div::before {
+    content: "📌";
+    font-size: 14px;
+    color: #007bff;
+}
+
+/* Menghapus border bawah pada item terakhir */
+.items div:last-child {
+    border-bottom: none;
+}
+
+
+/* Tombol Close */
+button.close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #777;
+    transition: color 0.3s;
+}
+
+button.close-btn:hover {
+    color: #333;
+}
+
+/* Styling untuk peta */
+#map {
+    width: 100%;
+    height: calc(100vh - 70px);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    position: fixed;
+    top: 65px;
+    /* Di bawah header */
+    left: 0;
+    z-index: 0;
+    /* Peta sebagai lapisan dasar */
+}
+
+.leaflet-control-search {
+    position: fixed;
+    /* Agar tetap di posisinya */
+    top: 20px;
+    /* Sesuaikan jarak dari atas header */
+    right: 20px;
+    /* Sesuaikan jarak dari kanan */
+    z-index: 1003;
+    /* Di atas header dan panel kontrol */
+    /* ... gaya lain dari search bar Anda ... */
+    background-color: white;
+    /* Contoh */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Tombol Pemicu */
+#custom-layer-switcher-button {
+    position: absolute;
+    top: 80px; /* Sesuaikan dengan posisi checkbox stunting/pangan Anda */
+    left: 10px; /* Sesuaikan agar tidak tumpang tindih */
+    z-index: 1001; /* Di atas peta */
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+    cursor: pointer;
+}
+#custom-layer-switcher-button a {
+    display: block;
+    width: 36px;  /* Lebar total area tombol (biarkan ini atau sesuaikan jika ukuran tombol ingin diubah) */
+    height: 36px; /* Tinggi total area tombol (biarkan ini atau sesuaikan jika ukuran tombol ingin diubah) */
+    background-image: url('../image/layer/icon.png');
+    background-repeat: no-repeat;
+    background-position: center center; /* Menempatkan ikon di tengah tombol */
+    background-size: 20px 20px;
+    background-color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#custom-layer-switcher-button a:hover {
+    background-color: #f4f4f4;
+}
+#custom-layer-switcher-button svg {
+    vertical-align: middle;
+}
+
+/* Panel Pilihan Layer */
+#custom-layer-panel {
+    position: absolute;
+    top: 80px; /* Di bawah tombol pemicu */
+    left: 10px;
+    width: 320px; /* Lebar panel */
+    max-height: calc(100vh - 70px); /* Tinggi maksimum, sisakan ruang */
+    overflow-y: auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    z-index: 1001; /* Di atas tombol pemicu jika terbuka */
+    padding: 15px;
+    display: none; /* Awalnya tersembunyi */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#custom-layer-panel.visible {
+    display: block;
+}
+
+#custom-layer-panel .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+#custom-layer-panel .panel-header h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+#close-layer-panel-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #777;
+    padding: 0 5px;
+}
+#close-layer-panel-button:hover {
+    color: #333;
+}
+
+
+/* Kontainer untuk Kartu Base Map */
+.base-layer-cards-container {
+    display: flex;
+    
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 15px;
+    gap: 10px; /* Jarak antar kartu */
+    margin-bottom: 10px;
+    scrollbar-width: thin; /* Untuk Firefox */
+    scrollbar-color: #aaa #f0f0f0; /* Warna scrollbar */
+}
+/* Styling untuk scrollbar Webkit (Chrome, Safari, Edge baru) */
+.base-layer-cards-container::-webkit-scrollbar {
+    height: 8px; /* Tinggi scrollbar horizontal */
+}
+.base-layer-cards-container::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+.base-layer-cards-container::-webkit-scrollbar-thumb {
+    background-color: #aaa;
+    border-radius: 4px;
+    border: 2px solid #f0f0f0; /* Membuat efek padding di sekitar thumb */
+}
+.base-layer-cards-container::-webkit-scrollbar-thumb:hover {
+    background-color: #888;
+}
+
+/* Styling Kartu Layer */
+.layer-card {
+    /* width: calc(50% - 5px); */ /* Hapus atau komentari ini */
+    min-width: 130px; /* Lebar minimum setiap kartu, sesuaikan */
+    width: 130px; /* Lebar tetap setiap kartu, sesuaikan */
+    flex-shrink: 0; /* Mencegah kartu menyusut saat ruang terbatas */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+.layer-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.layer-card.active {
+    border-color: #007bff; /* Warna border untuk kartu aktif */
+    box-shadow: 0 0 0 2px rgba(0,123,255,.25);
+}
+
+.layer-card img {
+    width: 100%;
+    height: 70px; /* Tinggi gambar pratinjau */
+    object-fit: cover; /* Memastikan gambar mengisi area tanpa merusak aspek rasio */
+    display: block;
+}
+
+.layer-card p {
+    margin: 8px 5px;
+    font-size: 13px;
+    color: #333;
+    font-weight: 500;
+    white-space: nowrap; /* Mencegah teks nama layer wrap jika panjang */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Tambahkan ellipsis jika teks terlalu panjang */
+}
+
+
+/* Kontainer untuk Overlay Layer */
+/* .overlay-layers-container h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+.overlay-layers-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.overlay-layers-container input[type="checkbox"] {
+    margin-right: 8px;
+    vertical-align: middle;
+} */
+ 
+
+/* .custom-zoom {
+    position: fixed; 
+    bottom: 220px;
+    left: 20px;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.custom-zoom button {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.custom-zoom button:hover {
+    background-color: #0056b3;
+} */
+
+/* Styling untuk legenda peta */
+.legend {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.504);
+    padding: 12px 16px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    z-index: 1001;
+    max-width: 200px;
+    /* Agar tidak terlalu lebar */
+}
+
+/* Styling judul legenda */
+.legend h4 {
+    margin: 0 0 12px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 6px;
+}
+
+/* Tata letak lebih rapi menggunakan flexbox */
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+/* Simbol warna untuk legenda */
+.legend .color-circle {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid #333;
+    /* Tambahkan border agar lebih jelas */
+}
+
+/* Warna untuk setiap kategori */
+.legend .low {
+    background: green;
+}
+
+.legend .medium {
+    background: orange;
+}
+
+.legend .high {
+    background: red;
+}
+
+/* Kotak untuk batas wilayah */
+.legend .color-box {
+    width: 25px;
+    height: 6px;
+    background: white;
+    /* Ubah menjadi putih */
+    border-radius: 3px;
+    box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.4);
+    /* Tambahkan efek shadow */
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    /* Tambahkan border tipis agar lebih tegas */
+}
+
+/* Warna indikator stunting */
+.low {
+    background: green;
+}
+
+.medium {
+    background: orange;
+}
+
+.high {
+    background: red;
+}
+
+/* Marker */
+.marker {
+    background: blue;
+}
+
+/* Garis batas wilayah */
+.boundary {
+    width: 20px;
+    height: 5px;
+    background: white;
+    margin-right: 8px;
+}

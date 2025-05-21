@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Stunting dan Kemandirian Pangan Jawa Timur</title>
+    <link rel="icon" type="image/png" sizes="48x48" href="image/logo3.jpg" />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- === SEMUA CSS DITARUH DI SINI === -->
+    <style>
+      /* 4. Konten Utama */
+      main {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 0 1rem;
+        box-sizing: border-box;
+      }
+
+      .content-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 30px;
+      }
+
+      /* === STYLE LAYER UNTUK KONTEN UTAMA === */
+      .main-content-area {
+        flex: 3;
+        min-width: 0;
+        /* Tambahkan gaya layer */
+        background-color: #ffffff;
+        /* Background putih untuk konten */
+        padding: 25px;
+        /* Padding internal */
+        border-radius: 8px;
+        /* Sudut melengkung */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+        /* Bayangan halus */
+        box-sizing: border-box;
+      }
+
+      /* === AKHIR STYLE LAYER KONTEN UTAMA === */
+
+      /* 5. Sidebar Kanan Sticky */
+      .sidebar {
+        flex: 1;
+        /* Lebar 1 bagian */
+        min-width: 250px;
+        /* Atur lebar minimum jika perlu */
+        position: sticky;
+        /* Kalkulasi top: tinggi cover (8px) + tinggi header (estimasi ~60px) + margin (misal 20px) = ~88px */
+        top: 88px;
+        /* <<< SESUAIKAN NILAI INI! Ukur tinggi header Anda + 8px + margin */
+        align-self: flex-start;
+        /* Pastikan tidak stretch (tambahan) */
+
+        /* Style visual sidebar */
+        padding: 20px;
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-sizing: border-box;
+      }
+
+      /* 6. Styling Konten di Sidebar */
+      .sidebar h3 {
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        color: #000000;
+        margin-top: 0;
+        /* Hapus margin atas default */
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+
+        border-radius: 8px;
+      }
+
+      .sidebar li a {
+        display: block;
+        padding: 10px 0px;
+        text-decoration: none;
+        color: #333;
+        font-family: Arial, sans-serif;
+        font-size: 15px;
+        transition: background-color 0.3s, color 0.3s;
+        border-bottom: 1px solid #eee;
+        /* Garis pemisah */
+      }
+
+      .sidebar li:last-child a {
+        border-bottom: none;
+        /* Hapus border di item terakhir */
+      }
+
+      .sidebar li a:hover {
+        color: #0056b3;
+      }
+
+      /* 7. Styling Konten Artikel */
+      section {
+        margin-bottom: 35px;
+        /* Jarak antar section */
+        scroll-margin-top: 100px;
+        /* Jarak saat navigasi link internal (sesuaikan jika perlu) */
+      }
+
+      section h2,
+      section h3 {
+        margin-top: 0;
+        /* Hapus margin atas default heading */
+        margin-bottom: 15px;
+        /* Jarak bawah heading */
+        color: #333;
+      }
+
+      section h2 {
+        font-size: 1.8rem;
+      }
+
+      /* Ukuran heading utama */
+      section h3 {
+        font-size: 1.4rem;
+      }
+
+      /* Ukuran sub-heading */
+      section p {
+        line-height: 1.6;
+        /* Jarak antar baris agar mudah dibaca */
+        color: #555;
+        /* Warna teks paragraf */
+      }
+
+      section ul {
+        /* Mengembalikan gaya default jika diperlukan, hapus inline style */
+        /* position: relative; left:-25px; */
+        padding-left: 25px;
+        /* Indentasi standar untuk list */
+        margin-top: 15px;
+        line-height: 1.6;
+        /* Jarak antar baris */
+        color: #555;
+        /* Warna teks list */
+      }
+
+      section ul li {
+        margin-bottom: 10px;
+        /* Jarak antar list item */
+      }
+
+      section ul li strong {
+        color: #333;
+        /* Warna teks bold di list */
+      }
+    </style>
+    <!-- === AKHIR BAGIAN CSS === -->
+  </head>
+
+  <body>
+    <!-- LAPISAN TETAP (PENUTUP PUTIH DI ATAS) -->
+    <div class="fixed-gap-cover"></div>
+    <!-- HEADER YANG AKAN STICKY -->
+
+    <header>
+      <div class="header-container">
+        <div class="logo-title">
+          <img src="image/Reg I Primary without Text.png" alt="Logo" class="logo"/>
+          <h1>
+            Direktorat Regional I |
+            <span class="non-bold">Kementerian PPN/Bappenas</span>
+          </h1>
+        </div>
+        <nav>
+          <!-- Hapus inline style z-index -->
+          <ul class="nav-menu">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="tentang.html">Tentang</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Konten Utama -->
+    <main class="main-container">
+      <div class="content-wrapper">
+        <!-- Wrapper untuk flex -->
+        <!-- Bagian Konten Utama -->
+        <div class="main-content-area">
+          <!-- Beri kelas -->
+          <section id="intro">
+            <h2>Selamat Datang di Dashboard Swasembada Pangan Jawa Timur</h2>
+            <p>
+              Dashboard ini dirancang untuk memberikan gambaran komprehensif
+              mengenai kondisi swasembada pangan di Jawa Timur, termasuk
+              berbagai upaya untuk mengurangi tingkat stunting. Dengan data yang
+              disajikan secara interaktif, pengguna dapat memahami lebih dalam
+              tentang kondisi ketahanan pangan dan kemandirian wilayah dalam
+              memenuhi kebutuhan dasar masyarakat.
+            </p>
+          </section>
+
+          <section id="swasembada">
+            <h3>Apa Itu Swasembada Pangan?</h3>
+            <p>
+              Swasembada pangan adalah kondisi di mana suatu wilayah atau negara
+              mampu memenuhi kebutuhan pangan masyarakatnya secara mandiri,
+              tanpa tergantung pada impor dari luar negeri. Hal ini mencakup
+              produksi beras, jagung, kedelai, daging, dan komoditas penting
+              lainnya. Swasembada pangan mencerminkan kemandirian dalam
+              ketahanan pangan, yang merupakan fondasi utama kesejahteraan dan
+              stabilitas sosial.
+            </p>
+          </section>
+
+          <section id="stunting">
+            <h3>Apa Itu Stunting?</h3>
+            <p>
+              Stunting adalah kondisi gagal tumbuh pada anak balita akibat
+              kekurangan gizi kronis dalam waktu yang lama. Anak yang mengalami
+              stunting memiliki tinggi badan yang lebih rendah dibandingkan
+              dengan anak seusianya. Stunting juga berdampak pada perkembangan
+              otak, sehingga berpotensi menurunkan kemampuan kognitif dan
+              produktivitas anak di masa depan. Upaya pengentasan stunting
+              sangat penting untuk meningkatkan kualitas sumber daya manusia.
+            </p>
+          </section>
+
+          <section id="tentang-dashboard">
+            <h3>Tentang Dashboard Swasembada Pangan</h3>
+            <p>
+              Dashboard ini merupakan alat pemantauan berbasis data yang
+              berfokus pada kondisi pangan dan gizi di Jawa Timur. Tujuannya
+              adalah untuk mendukung pengambilan keputusan yang berbasis bukti
+              dan mempercepat pencapaian kemandirian pangan serta penurunan
+              angka stunting. Fitur-fitur utama dashboard meliputi peta
+              interaktif, statistik produksi pangan, dan informasi terkait
+              program-program pemerintah di bidang pangan dan kesehatan
+              masyarakat.
+            </p>
+          </section>
+          <section id="pangan-jatim">
+            <h3>Swasembada Pangan di Jawa Timur</h3>
+            <p>
+              Swasembada pangan di Jawa Timur adalah salah satu prioritas utama
+              dalam pembangunan sektor pertanian di provinsi ini. Jawa Timur
+              dikenal sebagai salah satu lumbung pangan nasional karena
+              kontribusinya yang signifikan terhadap produksi pangan di
+              Indonesia, termasuk padi, jagung, kedelai, dan komoditas
+              hortikultura lainnya. Faktor Pendukung Swasembada Pangan di Jawa
+              Timur :
+            </p>
+            <ul>
+              <!-- Hapus inline style position/left -->
+              <li>
+                <strong>Lahan Pertanian yang Luas</strong>
+                <br />Jawa Timur memiliki lahan pertanian yang subur, khususnya
+                di dataran rendah seperti wilayah Madiun, Ngawi, Lamongan, dan
+                Mojokerto.
+              </li>
+              <li>
+                <strong>Ketersediaan Irigasi</strong>
+                <br />Infrastruktur irigasi yang memadai, seperti Waduk Karang
+                Kates, Waduk Sutami, dan bendungan lainnya, mendukung pasokan
+                air untuk pertanian.
+              </li>
+              <li>
+                <strong>Diversifikasi Pertanian</strong>
+                <br />Petani di Jawa Timur tidak hanya fokus pada satu
+                komoditas, tetapi juga menanam beragam tanaman, termasuk
+                sayuran, buah-buahan, dan tanaman perkebunan.
+              </li>
+              <li>
+                <strong>Program Pemerintah</strong>
+                <br />Pemerintah daerah dan pusat telah meluncurkan berbagai
+                program seperti distribusi benih unggul, subsidi pupuk, dan
+                pendampingan teknologi pertanian untuk meningkatkan
+                produktivitas.
+              </li>
+            </ul>
+          </section>
+          <section id="stunting-jatim">
+            <h3>Stunting di Jawa Timur</h3>
+            <p>
+              Stunting di Jawa Timur merupakan salah satu tantangan kesehatan
+              masyarakat yang menjadi perhatian serius pemerintah daerah dan
+              pusat. Stunting adalah kondisi gagal tumbuh pada anak balita
+              akibat kekurangan gizi kronis, terutama pada periode 1.000 hari
+              pertama kehidupan (HPK). Jawa Timur, sebagai salah satu provinsi
+              dengan jumlah penduduk terbesar di Indonesia, terus melakukan
+              upaya penanganan stunting melalui berbagai program. Untuk data
+              terbaru tentang prevalensi stunting di Jawa Timur, perlu merujuk
+              pada laporan resmi dari Dinas Kesehatan Jawa Timur atau Survei
+              Status Gizi Indonesia (SSGI). Jawa Timur memiliki potensi besar
+              untuk mengatasi stunting melalui sinergi pemerintah, masyarakat,
+              dan pemangku kepentingan lainnya. Penanganan stunting adalah kunci
+              untuk menciptakan generasi masa depan yang sehat dan produktif.
+            </p>
+          </section>
+          <!-- Section Tentang Dashboard kedua dihapus karena duplikat -->
+        </div>
+
+        <!-- Sidebar Kanan -->
+        <div class="sidebar">
+          <!-- Ganti ID dengan class atau gunakan ID jika prefer -->
+          <h3>Daftar Artikel</h3>
+          <!-- Hapus inline style -->
+          <ul>
+            <!-- Hapus inline style -->
+            <li><a href="#intro">Selamat Datang</a></li>
+            <!-- Hapus inline style -->
+            <li><a href="#swasembada">Apa itu Swasembada Pangan</a></li>
+            <!-- Hapus inline style -->
+            <li><a href="#stunting">Apa itu Stunting</a></li>
+            <!-- Hapus inline style -->
+            <li><a href="#tentang-dashboard">Tentang Dashboard</a></li>
+            <!-- Hapus inline style -->
+            <li><a href="#pangan-jatim">Swasembada Di Jawa Timur</a></li>
+            <!-- Hapus inline style -->
+            <li><a href="#stunting-jatim">Stunting Di Jawa Timur</a></li>
+            <!-- Hapus inline style -->
+          </ul>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer (Tambahkan jika perlu) -->
+  </body>
+</html>
